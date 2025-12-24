@@ -3,3 +3,5 @@ I'm having trouble creating a Google Cloud account to access my Google API key, 
 I've tried using my Visa and Mastercard, but I've had issues. I've contacted my bank, and they've confirmed that my card is still active. I've sent proof of this via the GitHub link.
 
 So, I decided to use OpenStreetMap and Leaflet.js for map rendering.
+
+and if you want to use the Google Maps API, you must first enable the Maps JavaScript API, Place API and Maps Embed API libraries, then enter the generated credentials in .env
