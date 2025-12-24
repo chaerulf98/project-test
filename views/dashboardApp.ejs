@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Local LLM Maps Dashboard</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <!-- Leaflet CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+ 
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<div class="navbar">
+  <h1>Local LLM Maps</h1>
+  <div class="user">CF</div>
+</div>
+
+<div class="container">
+
+  <!-- MAP LEFT -->
+  <div class="map-left">
+    <div class="map-card">
+      <div id="map"></div>
+    </div>
+  </div>
+
+  <!-- RESULT RIGHT -->
+  <div class="result-right">
+    <div class="sidebar">
+
+      <h2>Seacrh Location</h2>
+
+      <form method="POST" action="/search" class="search-form">
+        <input name="prompt" placeholder="Tempat makan dekat Monas" required />
+        <button type="submit">Search</button>
+      </form>
+
+      <% if (places && places.length > 0) { %>
+        <div class="results">
+          <% places.forEach(place => { %>
+            <div class="result-item">
+              <h3><%= place.name %></h3>
+              <p><%= place.address %></p>
+              <a target="_blank"
+                 href="https://www.openstreetmap.org/?mlat=<%= place.lat %>&mlon=<%= place.lng %>#map=18/<%= place.lat %>/<%= place.lng %>">
+                Open Map
+              </a>
+            </div>
+          <% }) %>
+        </div>
+      <% } else { %>
+        <p class="empty">No Search Results</p>
+      <% } %>
+
+    </div>
+  </div>
+
+</div>
+
+<!-- Leaflet JS -->
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+<script>
+  const places = <%- JSON.stringify(places || []) %>;
+
+  if (places.length > 0) {
+
+    const map = L.map("map");
+
+    L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+      attribution: "&copy; OpenStreetMap contributors"
+    }).addTo(map);
+
+    const bounds = L.latLngBounds([]);
+
+    places.forEach(place => {
+      if (!place.lat || !place.lng) return;
+
+      const marker = L.marker([place.lat, place.lng])
+        .addTo(map)
+        .bindPopup(
+          `<b>${place.name}</b><br>${place.address}`
+        );
+
+      bounds.extend([place.lat, place.lng]);
+    });
+
+    map.fitBounds(bounds, {
+      padding: [40, 40]
+    });
+
+  }
+</script>
+
+</body>
+</html>

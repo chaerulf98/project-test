@@ -1,0 +1,140 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Inter', sans-serif;
+}
+
+body {
+  background: #f4f6f8;
+  color: #333;
+}
+
+/* ===== NAVBAR ===== */
+.navbar {
+  height: 60px;
+  background: #0f766e;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  padding: 0 24px;
+  justify-content: space-between;
+}
+
+/* ===== LAYOUT ===== */
+.container {
+  display: flex;
+  height: calc(100vh - 60px);
+  background: #f4f6f8;
+}
+
+/* ===== MAP (LEFT - DOMINAN) ===== */
+.map-left {
+  flex: 3.8;
+  padding: 12px;
+}
+
+.map-card {
+  height: 100%;
+  background: #fff;
+  border-radius: 14px;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.08);
+  overflow: hidden;
+}
+
+#map {
+  width: 100%;
+  height: 100%;
+}
+
+/* ===== RESULT SIDEBAR (RIGHT) ===== */
+.result-right {
+  flex: 1.2;
+  padding: 12px 12px 12px 0;
+}
+
+.sidebar {
+  height: 100%;
+  background: #fff;
+  border-radius: 14px;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.08);
+  display: flex;
+  flex-direction: column;
+  padding: 14px;
+}
+
+/* ===== HEADER ===== */
+.sidebar h2 {
+  font-size: 16px;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+/* ===== SEARCH ===== */
+.search-form {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 12px;
+}
+
+.search-form input {
+  flex: 1;
+  padding: 8px 10px;
+  font-size: 13px;
+  border-radius: 6px;
+  border: 1px solid #ddd;
+}
+
+.search-form button {
+  background: #0f766e;
+  color: #fff;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 6px;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+/* ===== RESULT LIST ===== */
+.results {
+  flex: 1;
+  overflow-y: auto;
+  padding-right: 4px;
+}
+
+.result-item {
+  padding: 12px;
+  border-bottom: 1px solid #eee;
+  transition: background 0.2s ease;
+}
+
+.result-item h3 {
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.result-item p {
+  font-size: 12px;
+  color: #666;
+  line-height: 1.4;
+  margin-bottom: 6px;
+}
+
+.result-item a {
+  font-size: 12px;
+  color: #0f766e;
+  text-decoration: none;
+}
+
+/* ===== HOVER EFFECT ===== */
+.result-item:hover {
+  background: #f0fdfa;
+  cursor: pointer;
+}
+
+.empty {
+  font-size: 13px;
+  color: #999;
+  margin-top: 10px;
+}

@@ -1,0 +1,5 @@
+I'm having trouble creating a Google Cloud account to access my Google API key, as Google Cloud billing requires debit or credit card billing.
+
+I've tried using my Visa and Mastercard, but I've had issues. I've contacted my bank, and they've confirmed that my card is still active. I've sent proof of this via the GitHub link.
+
+So, I decided to use OpenStreetMap and Leaflet.js for map rendering.
